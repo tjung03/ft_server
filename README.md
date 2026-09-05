@@ -6,7 +6,7 @@
 
 | 구현 | 동작 | 코드 |
 |---|---|---|
-| HTTPS와 HTTP 전환 | 자체 서명 인증서 생성, HTTP 요청을 HTTPS로 301 리다이렉트 | [start.sh](srcs/start.sh), [Nginx 설정](srcs/default) |
+| HTTP → HTTPS 리다이렉트 | 자체 서명 인증서 생성, HTTP 요청을 HTTPS로 301 리다이렉트 | [start.sh](srcs/start.sh), [Nginx 설정](srcs/default) |
 | PHP 요청 처리 | Nginx가 PHP 요청을 Unix socket으로 PHP 7.3-FPM에 전달 | [Nginx 설정](srcs/default) |
 | 웹·DB 연결 | WordPress DB와 로컬 사용자를 생성하고 애플리케이션 설정 배치 | [start.sh](srcs/start.sh), [wp-config.php](srcs/wp-config.php) |
 | DB 관리 화면 | phpMyAdmin 5.0.2 배치, cookie 인증으로 로컬 DB 접속 | [config.inc.php](srcs/config.inc.php) |
