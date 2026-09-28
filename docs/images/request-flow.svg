@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="470" viewBox="0 0 1000 470" role="img" aria-labelledby="title desc">
+<title id="title">ft_server · 요청 처리 구조</title><desc id="desc">하나의 Docker 컨테이너 안에서 Nginx가 80과 443 요청을 받고, 정적 파일은 직접 제공하며 PHP 요청은 PHP-FPM으로 전달한다. WordPress와 phpMyAdmin은 같은 컨테이너의 MariaDB에 연결한다.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8Z" fill="#64748b"/></marker></defs>
+<rect width="1000" height="470" rx="16" fill="#f8fafc"/><g font-family="Arial,'Noto Sans CJK KR','Malgun Gothic',sans-serif">
+<text x="32" y="44" font-size="27" font-weight="700" fill="#17253b">ft_server · 요청 처리 구조</text>
+<text x="32" y="74" font-size="16" fill="#4b5e78">Nginx · PHP-FPM · MariaDB를 하나의 컨테이너에 구성</text>
+<rect x="32" y="104" width="205" height="275" rx="12" fill="#fff6ea" stroke="#e5cba9"/>
+<text x="52" y="137" font-size="19" font-weight="700" fill="#946018">Client</text><text x="52" y="168" font-size="16" fill="#263a54">Browser / curl</text>
+<text x="52" y="222" font-size="15" fill="#263a54">HTTP :80</text><text x="52" y="250" font-size="15" fill="#263a54">HTTPS :443</text>
+<rect x="277" y="104" width="691" height="275" rx="12" fill="#edf2ff" stroke="#b8c7e3"/>
+<text x="297" y="137" font-size="17" font-weight="700" fill="#4865a0">하나의 Docker 컨테이너</text>
+<rect x="307" y="166" width="190" height="92" rx="10" fill="#fff" stroke="#cbd5e1"/><text x="327" y="197" font-size="20" font-weight="700" fill="#163b76">Nginx</text><text x="327" y="226" font-size="15" fill="#263a54">:80 → HTTPS 전환</text><text x="327" y="248" font-size="15" fill="#263a54">:443 요청 처리</text>
+<rect x="532" y="166" width="190" height="92" rx="10" fill="#fff" stroke="#cbd5e1"/><text x="552" y="197" font-size="20" font-weight="700" fill="#163b76">PHP 7.3-FPM</text><text x="552" y="226" font-size="15" fill="#263a54">Unix socket</text>
+<rect x="757" y="166" width="181" height="92" rx="10" fill="#ecf8f4" stroke="#a9d5c6"/><text x="777" y="197" font-size="20" font-weight="700" fill="#086b62">MariaDB</text><text x="777" y="226" font-size="15" fill="#263a54">wordpress DB</text>
+<rect x="420" y="286" width="385" height="66" rx="10" fill="#f5f8ff" stroke="#cbd5e1"/><text x="440" y="314" font-size="18" font-weight="700" fill="#163b76">/var/www/html</text><text x="440" y="339" font-size="15" fill="#263a54">WordPress · phpMyAdmin · 정적 파일</text>
+<path d="M237 212 H297" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/><path d="M497 212 H522" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/><path d="M722 212 H747" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M402 258 V319 H410" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/><path d="M627 258 V276" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4"/>
+<rect x="32" y="397" width="936" height="48" rx="10" fill="#fff" stroke="#cbd5e1"/><text x="52" y="427" font-size="16" fill="#263a54">정적 파일은 Nginx가 제공 · PHP 요청은 PHP-FPM으로 전달 · PHP 애플리케이션은 MariaDB 사용</text>
+</g></svg>
