@@ -11,11 +11,19 @@
 | 웹·DB 연결 | WordPress DB와 로컬 사용자를 생성하고 애플리케이션 설정 배치 | [start.sh](srcs/start.sh), [wp-config.php](srcs/wp-config.php) |
 | DB 관리 화면 | phpMyAdmin 5.0.2 배치, cookie 인증으로 로컬 DB 접속 | [config.inc.php](srcs/config.inc.php) |
 
-## 요청 처리 구조
+## 구성과 요청 흐름
 
-![하나의 Docker 컨테이너 안에서 Nginx, PHP-FPM, WordPress와 phpMyAdmin, MariaDB가 요청을 처리하는 구조](docs/images/request-flow.svg)
+### 단일 컨테이너 구성
 
-80번 포트 요청은 Nginx 설정에서 HTTPS로 `301` 전환합니다. 443번 포트에서는 정적 파일을 Nginx가 직접 제공하고, PHP 요청은 Unix socket을 통해 PHP-FPM으로 전달합니다. WordPress와 phpMyAdmin의 PHP 코드는 같은 컨테이너의 MariaDB를 사용합니다.
+![Nginx, PHP-FPM, MariaDB와 웹 콘텐츠를 하나의 Docker 컨테이너에 배치한 구성](docs/images/container-structure.svg)
+
+Nginx, PHP-FPM, MariaDB, WordPress와 phpMyAdmin을 하나의 컨테이너에 함께 구성합니다. `start.sh`는 컨테이너 시작 시 인증서와 DB를 준비하고 웹 애플리케이션을 배치한 뒤 서비스를 시작합니다.
+
+### 요청 처리 흐름
+
+![Client 요청이 Nginx에서 정적 파일 또는 PHP-FPM으로 분기되고 PHP 요청이 MariaDB로 연결되는 흐름](docs/images/request-flow.svg)
+
+80번 포트 요청은 HTTPS로 `301` 전환합니다. 443번 포트에서 정적 파일은 Nginx가 직접 제공하고, PHP 요청은 Unix socket을 통해 PHP-FPM으로 전달합니다. WordPress와 phpMyAdmin의 PHP 코드는 같은 컨테이너의 MariaDB를 사용합니다.
 
 ## 저장소 구조
 
