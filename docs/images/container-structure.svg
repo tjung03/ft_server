@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="470" viewBox="0 0 1000 470" role="img" aria-labelledby="title desc">
+<title id="title">ft_server · 단일 컨테이너 구성</title>
+<desc id="desc">Debian Buster 기반 하나의 Docker 컨테이너 안에 Nginx, PHP 7.3-FPM, MariaDB와 웹 콘텐츠가 함께 배치되어 있다. start.sh가 컨테이너 시작 시 인증서, DB, WordPress, phpMyAdmin을 초기화하고 서비스를 시작한다.</desc>
+<rect width="1000" height="470" rx="16" fill="#f8fafc"/>
+<g font-family="Arial,'Noto Sans CJK KR','Malgun Gothic',sans-serif">
+<text x="32" y="44" font-size="27" font-weight="700" fill="#17253b">ft_server · 단일 컨테이너 구성</text>
+<text x="32" y="74" font-size="16" fill="#4b5e78">Debian Buster 기반 · Nginx · PHP-FPM · MariaDB · Web Content</text>
+
+<rect x="32" y="108" width="936" height="286" rx="12" fill="#edf2ff" stroke="#b8c7e3"/>
+<text x="54" y="142" font-size="18" font-weight="700" fill="#4865a0">Docker Container</text>
+
+<rect x="72" y="176" width="250" height="92" rx="10" fill="#fff" stroke="#cbd5e1"/>
+<text x="94" y="208" font-size="21" font-weight="700" fill="#163b76">Nginx</text>
+<text x="94" y="238" font-size="15" fill="#263a54">HTTP :80 · HTTPS :443</text>
+
+<rect x="375" y="176" width="250" height="92" rx="10" fill="#fff" stroke="#cbd5e1"/>
+<text x="397" y="208" font-size="21" font-weight="700" fill="#163b76">PHP 7.3-FPM</text>
+<text x="397" y="238" font-size="15" fill="#263a54">FastCGI · Unix Socket</text>
+
+<rect x="678" y="176" width="250" height="92" rx="10" fill="#ecf8f4" stroke="#a9d5c6"/>
+<text x="700" y="208" font-size="21" font-weight="700" fill="#086b62">MariaDB</text>
+<text x="700" y="238" font-size="15" fill="#263a54">WordPress DB · Local User</text>
+
+<rect x="72" y="296" width="553" height="70" rx="10" fill="#f5f8ff" stroke="#cbd5e1"/>
+<text x="94" y="326" font-size="19" font-weight="700" fill="#163b76">/var/www/html</text>
+<text x="94" y="351" font-size="15" fill="#263a54">WordPress · phpMyAdmin · 정적 파일</text>
+
+<rect x="678" y="296" width="250" height="70" rx="10" fill="#fff6ea" stroke="#e5cba9"/>
+<text x="700" y="326" font-size="19" font-weight="700" fill="#946018">start.sh</text>
+<text x="700" y="351" font-size="15" fill="#263a54">인증서 · DB · Web App 초기화</text>
+
+<rect x="32" y="416" width="936" height="30" rx="8" fill="#fff" stroke="#cbd5e1"/>
+<text x="52" y="436" font-size="14" fill="#475569">Container 삭제 시 내부 DB와 시작 시 내려받은 WordPress · phpMyAdmin 데이터도 함께 사라지는 단일 컨테이너 실습 구성</text>
+</g></svg>
