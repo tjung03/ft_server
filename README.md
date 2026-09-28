@@ -25,7 +25,7 @@ flowchart LR
 
         N -->|"정적 파일"| W
         N -->|"PHP 요청"| F
-        F -->|"PHP 코드 실행"| W
+        F -.-> W
         F -->|"DB 연결"| D
     end
 
