@@ -11,6 +11,30 @@
 | 웹·DB 연결 | WordPress DB와 로컬 사용자를 생성하고 애플리케이션 설정 배치 | [start.sh](srcs/start.sh), [wp-config.php](srcs/wp-config.php) |
 | DB 관리 화면 | phpMyAdmin 5.0.2 배치, cookie 인증으로 로컬 DB 접속 | [config.inc.php](srcs/config.inc.php) |
 
+## 요청 처리 구조
+
+```mermaid
+flowchart LR
+    C["브라우저 / HTTP 클라이언트"]
+
+    subgraph CT["하나의 Docker 컨테이너"]
+        N["Nginx<br/>:80 / :443"]
+        F["PHP 7.3-FPM<br/>Unix socket"]
+        W["/var/www/html<br/>WordPress · phpMyAdmin · 정적 파일"]
+        D["MariaDB"]
+
+        N -->|"정적 파일"| W
+        N -->|"PHP 요청"| F
+        F -->|"PHP 코드 실행"| W
+        F -->|"DB 연결"| D
+    end
+
+    C -->|"HTTP :80"| N
+    C -->|"HTTPS :443"| N
+```
+
+80번 포트 요청은 Nginx 설정에서 HTTPS로 `301` 전환합니다. 443번 포트에서는 정적 파일을 Nginx가 직접 제공하고, PHP 요청은 Unix socket을 통해 PHP-FPM으로 전달합니다. WordPress와 phpMyAdmin의 PHP 코드는 같은 컨테이너의 MariaDB를 사용합니다.
+
 ## 저장소 구조
 
 ```text
